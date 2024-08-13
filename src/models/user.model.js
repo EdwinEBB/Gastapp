@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import {hashPassword} from "../middlewares/Haspassword.js"
 
 const userschema= new mongoose.Schema({
     username:{
@@ -21,7 +20,6 @@ const userschema= new mongoose.Schema({
     }
 })
 
-hashPassword(userschema)
 const usermodel=mongoose.model('user',userschema);
 
 export default usermodel;

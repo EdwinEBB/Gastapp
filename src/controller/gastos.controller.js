@@ -1,12 +1,12 @@
 import gastomodel from "../models/gasto.model.js";
 
 export const allgastos=async(req,res)=>{
-    const {userId}=req.query;
+    const userid=req.user.userID;
 
 
     try {
         //Buscar todos los datos asociados con el usuario
-        const gastos=await gastomodel.find({userId});
+        const gastos=await gastomodel.find({userid:userid});
         res.status(200).json(gastos)
     } catch (error) {
         res.status(500).json({message:"Error interno",error:error.message})
@@ -14,7 +14,8 @@ export const allgastos=async(req,res)=>{
 }
 
 export const creategasto=async(req,res)=>{
-    const {monto,categoria,descripcion,userId}=req.body;
+    const {monto,categoria,descripcion}=req.body;
+    const userid=req.user.userID
 
     try {
         const newgasto= new gastomodel({
