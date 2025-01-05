@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
+import { Cluster } from "./config.js";
+
+const uri=process.env.Cluster;
 
 const mongoconnet=async()=>{
     try {
         
-        await mongoose.connect('mongodb+srv://ebayuelobello:18092003EBB$@gastos.pn3of.mongodb.net/?retryWrites=true&w=majority&appName=Gastos')
+        await mongoose.connect(Cluster)
         console.log("Conexión a base de datos lista")
 
     } catch (error) {

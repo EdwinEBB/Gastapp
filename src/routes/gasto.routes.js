@@ -5,7 +5,6 @@ import { authTK } from "../middlewares/VerificarToken.js";
 const gastoroutes=Express.Router();
 
 gastoroutes.use(authTK)
-
 gastoroutes.get('/gastos/allgasto',allgastos);
 gastoroutes.post('/gastos/creargasto',creategasto);
 gastoroutes.put('/gastos/updategasto/:id',updategasto);
